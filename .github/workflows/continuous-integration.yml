@@ -1,4 +1,4 @@
-name: ci
+name:LENOVO
 
 on:
   workflow_dispatch:
