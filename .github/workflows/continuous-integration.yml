@@ -1,7 +1,45 @@
-name: ci
+name:LENOVOname: MSYS2
+on: [msys2.exe]
+https://www.msys2.org/docs/ci/#gitlabhttps://docs.gitlab.com/ee/ci/runners/saas/windows_saas_runner.htmlname: MSYS2
+on: [push, pull_request]
+
+jobs:ID4QZ2MDF74PCILX
+  msys2-ucrt64:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:https://docs.gitlab.com/ee/ci/runners/saas/windows_saas_runner.html
+      - uses: actions/checkout@v3
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: UCRT64
+          update: true
+          install: git mingw-w64-ucrt-x86_64-gcc
+      - name: CI-Build
+        run: |
+          echo 'Running in MSYS2!'
+          ./ci-build.sh
+jobs:
+  msys2-ucrt64:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: UCRT64
+          update: true
+          install: git mingw-w64-ucrt-x86_64-gcc
+      - name: CI-Build
+        run: |
+          echo 'Running in MSYS2!'
+          ./ci-build.sh
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:https://github.com/msys2/msys2-installer/releases/download/nightly-x86_64/msys2-base-x86_64-latest.sfx.exe
   push:
     branches: [ main ]
   pull_request:
